@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "dev" {
   count = 3
-  ami = "ami-083654bd07b5da81d"
+  ami = "ami-083654bd07b5da81d" # ubuntu-focal-20.04-amd64-server-20211021
   instance_type = "t2.micro"
   key_name = "terraform-aws-"
   tags = {
@@ -22,14 +22,14 @@ resource "aws_security_group" "acesso-ssh" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["45.177.153.246/32"]
+    cidr_blocks      = ["45.177.153.89/32"]
   }
 
   egress {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["45.177.153.246/32", "192.168.22.233/32"]
+    cidr_blocks      = ["45.177.153.89/32", "192.168.22.233/32"]
     ipv6_cidr_blocks = ["::/0"]
   }
 
