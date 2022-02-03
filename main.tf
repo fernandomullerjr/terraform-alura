@@ -6,11 +6,11 @@ resource "aws_instance" "dev" {
   count = 3
   ami = "ami-083654bd07b5da81d" # ubuntu-focal-20.04-amd64-server-20211021
   instance_type = "t2.micro"
-  key_name = "terraform-aws-"
+  key_name = "terraform-aws"
   tags = {
       Name = "dev${count.index}"
   }
-  vpc_security_group_ids = ["sg-069132da01c2f341b"]
+  vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
 }
 
 resource "aws_security_group" "acesso-ssh" {
