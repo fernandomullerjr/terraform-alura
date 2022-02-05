@@ -15,7 +15,7 @@ resource "aws_security_group" "acesso-ssh" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["45.177.153.89/32", "192.168.22.233/32"]
+    cidr_blocks      = var.cdirs_acesso_remoto
     ipv6_cidr_blocks = ["::/0"]
   }
 
@@ -35,14 +35,14 @@ resource "aws_security_group" "acesso-ssh-us-east-2" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["45.177.153.89/32"]
+    cidr_blocks      = var.cdirs_acesso_remoto
   }
 
   egress {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["45.177.153.89/32", "192.168.22.233/32"]
+    cidr_blocks      = var.cdirs_acesso_remoto
     ipv6_cidr_blocks = ["::/0"]
   }
 
